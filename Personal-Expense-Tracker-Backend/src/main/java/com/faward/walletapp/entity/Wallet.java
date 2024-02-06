@@ -1,20 +1,19 @@
 package com.faward.walletapp.entity;
 
-
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+
 public class Wallet {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     private String name;
 
@@ -24,7 +23,7 @@ public class Wallet {
 
     private Integer priority; //1=High 2=Medium 3=Low
     private Double currentBalance;
-    @PrePersist
+
 
     public void  setBalance(){
         this.currentBalance = (double) 0;
