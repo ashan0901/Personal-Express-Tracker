@@ -9,6 +9,7 @@ import CreateWallet from './components/dashboard/dashboardoperations/CreateWalle
 
 function App() {
   return (
+
     <BrowserRouter>
       <Route path="/" component={Nav} />
       <Routes>
@@ -17,6 +18,7 @@ function App() {
         <Route path="/createwallet" exact component={CreateWallet} />
       </Routes>
     </BrowserRouter>
+
   );
 }
 
