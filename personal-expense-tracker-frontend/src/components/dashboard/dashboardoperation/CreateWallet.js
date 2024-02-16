@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 class CreateWallet extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class CreateWallet extends Component {
     axios
       .post("http://localhost:8080/wallet/save", newWallet)
       .then((res) => {
-        alert("success");
+        this.navigate("/dashboard");
       })
       .catch((err) => {
         alert("error");
@@ -36,9 +37,16 @@ class CreateWallet extends Component {
     event.preventDefault();
   };
 
+  renderNavigate = () => {
+    const navigate = useNavigate();
+    this.navigate = navigate; // Assign navigate function to this.navigate
+    return null; // This component doesn't render anything
+  };
+
   render() {
     return (
       <div className="project">
+        <this.renderNavigate />
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
