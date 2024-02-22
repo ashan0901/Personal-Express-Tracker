@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "C:/Users/ashan//Desktop/PET/personal-expense-tracker-frontend/src/App.css";
+// import "C:/Users/ashan/Desktop/PET/personal-expense-tracker-frontend/src/App.css";
 
 class NotFound extends Component {
   render() {
