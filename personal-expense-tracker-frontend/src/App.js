@@ -7,6 +7,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateWallet from "./components/dashboard/dashboardoperation/CreateWallet";
 import NotFound from "./components/shared/NotFound";
+import LoginForm from "./components/LoginForm/LoginForm";
+import RegisterForm from "./components/RegisterForm/RegisterForm";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="/dashboard" exact element={<Dashboard />} />
         <Route path="/createwallet" exact element={<CreateWallet />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/login" exact element={<LoginForm />} />
+        <Route path="/register" exact element={<RegisterForm />} />
       </Routes>
     </BrowserRouter>
   );

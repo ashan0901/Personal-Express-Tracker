@@ -4,7 +4,7 @@ import './Login.css'
 
 const LoginForm = () => {
   return (
-    <div >
+    <div className='bodyclass' >
         <form action="">
             <h1 >Login</h1>
             <br>

@@ -4,6 +4,7 @@ import './Register.css';
 
 function Signup() {
   return (
+    <div className='bodyclass1'>
       <div className="wrapper">
         <form action="">
           <h1>Sign Up</h1>
@@ -48,6 +49,7 @@ function Signup() {
           </div>
 
         </form>
+    </div>
     </div>
   )
 }
