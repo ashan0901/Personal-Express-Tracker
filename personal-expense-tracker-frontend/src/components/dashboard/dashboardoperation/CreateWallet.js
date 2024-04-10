@@ -1,109 +1,80 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { createWallet } from "../../../actions/projectActions"; // Adjust the path as necessary
 
-class CreateWallet extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      accountNumber: "",
-      description: "",
-      priority: "",
-    };
-  }
+function CreateWallet() {
+  const [name, setName] = useState("");
+  const [accountNumber, setAccountNumber] = useState("");
+  const [description, setDescription] = useState("");
+  const [priority, setPriority] = useState("");
+  const { id } = useParams();
 
-  changeHandler = (event, fieldName) => {
-    this.setState({
-      [fieldName]: event.target.value,
-    });
-  };
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  submitHandler = (event) => {
-    const newWallet = {
-      name: this.state.name,
-      accountNumber: this.state.accountNumber,
-      description: this.state.description,
-      priority: this.state.priority,
-    };
-    axios
-      .post("http://localhost:8080/wallet/save", newWallet)
-      .then((res) => {
-        this.navigate("/dashboard");
-      })
-      .catch((err) => {
-        alert("error");
-      });
+  const submitHandler = (event) => {
     event.preventDefault();
+
+    console.log(id);
+    const newWallet = { name, accountNumber, description, priority };
+    dispatch(createWallet(newWallet, navigate, id));
   };
 
-  renderNavigate = () => {
-    const navigate = useNavigate();
-    this.navigate = navigate; // Assign navigate function to this.navigate
-    return null; // This component doesn't render anything
-  };
-
-  render() {
-    return (
-      <div className="project">
-        <this.renderNavigate />
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 m-auto">
-              <h5 className="display-4 text-center">Create Wallet</h5>
-              <hr />
-              <form onSubmit={(event) => this.submitHandler(event)}>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    onChange={(event) => this.changeHandler(event, "name")}
-                    className="form-control form-control-lg "
-                    placeholder="Account Name"
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    onChange={(event) =>
-                      this.changeHandler(event, "accountNumber")
-                    }
-                    className="form-control form-control-lg"
-                    placeholder="Account No"
-                  />
-                </div>
-                <div className="form-group">
-                  <textarea
-                    className="form-control form-control-lg"
-                    onChange={(event) =>
-                      this.changeHandler(event, "description")
-                    }
-                    placeholder="Description"
-                  ></textarea>
-                </div>
-                <div className="form-group">
-                  <select
-                    className="form-control form-control-lg"
-                    onChange={(event) => this.changeHandler(event, "priority")}
-                    name="priority"
-                  >
-                    <option value={3}>Display Priority</option>
-                    <option value={1}>High</option>
-                    <option value={2}>Medium</option>
-                    <option value={3}>Low</option>
-                  </select>
-                </div>
+  return (
+    <div className="project">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-8 m-auto">
+            <h5 className="display-4 text-center">Create Wallet</h5>
+            <hr />
+            <form onSubmit={submitHandler}>
+              <div className="form-group">
                 <input
-                  type="submit"
-                  className="btn btn-primary btn-block mt-4"
-                  value="Create/Update"
+                  type="text"
+                  onChange={(e) => setName(e.target.value)}
+                  className="form-control form-control-lg"
+                  placeholder="Account Name"
                 />
-              </form>
-            </div>
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  onChange={(e) => setAccountNumber(e.target.value)}
+                  className="form-control form-control-lg"
+                  placeholder="Account No"
+                />
+              </div>
+              <div className="form-group">
+                <textarea
+                  className="form-control form-control-lg"
+                  onChange={(e) => setDescription(e.target.value)}
+                  placeholder="Description"
+                ></textarea>
+              </div>
+              <div className="form-group">
+                <select
+                  className="form-control form-control-lg"
+                  onChange={(e) => setPriority(e.target.value)}
+                  name="priority"
+                >
+                  <option value="">Display Priority</option>
+                  <option value="1">High</option>
+                  <option value="2">Medium</option>
+                  <option value="3">Low</option>
+                </select>
+              </div>
+              <input
+                type="submit"
+                className="btn btn-primary btn-block mt-4"
+                value="Create"
+              />
+            </form>
           </div>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default CreateWallet;

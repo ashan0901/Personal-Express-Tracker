@@ -1,10 +1,11 @@
 package com.faward.walletapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 
 @Data
@@ -12,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 
 public class Wallet {
-    @Id
+@Id
     private String id;
 
     private String name;
@@ -22,10 +23,11 @@ public class Wallet {
     private String description;
 
     private Integer priority; //1=High 2=Medium 3=Low
-    private Double currentBalance;
+    private Double currentBalance = 0.0 ;
 
+    @DBRef
+    private Account account;
 
-    public void  setBalance(){
-        this.currentBalance = (double) 0;
-    }
+    //private List<Transaction> transactions;
+    //public void  setBalance(){this.currentBalance = (double) 0;}
 }

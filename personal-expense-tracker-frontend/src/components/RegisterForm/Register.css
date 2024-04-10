@@ -6,11 +6,12 @@
     background:url('C:\Users\ashan\Desktop\PET\personal-expense-tracker-frontend\src\components\Assets\image10.jpg') no-repeat;
     background-position:center;
     background-size: cover;
-    top: ;
+
   }
   
   .wrapper{
-    margin-top: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
       width:550px;
       min-height: min-content;
       background:  transparent;
