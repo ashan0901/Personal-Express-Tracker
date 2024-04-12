@@ -7,7 +7,6 @@ const Transaction = () => {
   const { userId, walletId } = useParams();
   const [transactions, setTransactions] = useState([]);
   const [wallet, setWallet] = useState({ name: "Loading..." });
-  const [balance, setBalance] = useState(0);
 
   useEffect(() => {
     const fetchTransactions = async () => {
@@ -18,7 +17,6 @@ const Transaction = () => {
         // Ensure the response is an array before setting it
         if (Array.isArray(response.data)) {
           setTransactions(response.data);
-          calculateBalance(response.data);
         } else {
           // Log unexpected response for debugging
           console.error(
@@ -49,15 +47,6 @@ const Transaction = () => {
     fetchWalletDetails();
   }, [userId, walletId]); // Dependency on walletId ensures this effect runs again if the walletId changes
 
-  const calculateBalance = (transactions) => {
-    const total = transactions.reduce((acc, transaction) => {
-      return transaction.type === 1
-        ? acc + parseFloat(transaction.amount)
-        : acc - parseFloat(transaction.amount);
-    }, 0);
-    setBalance(total);
-  };
-
   return (
     <div>
       <Nav1 />
@@ -75,7 +64,7 @@ const Transaction = () => {
         <div className="card text-center">
           <div className="card-header bg-success text-white">
             <h4>{wallet.name} - Balance</h4>
-            <h1>Rs. {balance.toFixed(2)}</h1>
+            <h1>Rs. {wallet.currentBalance}.00</h1>
           </div>
         </div>
         <hr />
