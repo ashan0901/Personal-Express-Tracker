@@ -20,24 +20,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         {/* <Nav />    */}
-        <Routes>
-          <Route path="/" exact element={<Welcome />} />
-          <Route path="/:userId" element={<Dashboard />} />
-          <Route path="/wall/add/:userId" exact element={<CreateWallet />} />
-          <Route path="/updatewallet/:id" exact element={<UpdateWallet />} />
-          <Route
-            path="/user/:userId/wallet/:walletId"
-            element={<Transaction />}
-          />
-          <Route
-            path="/user/:userId/wallet/:walletId/addTransaction"
-            exact
-            element={<AddTransaction />}
-          />
-          <Route path="*" element={<NotFound />} />
-          <Route path="/login" exact element={<LoginForm />} />
-          <Route path="/register" exact element={<RegisterForm />} />
-        </Routes>
+        
       </BrowserRouter>
     </Provider>
   );
