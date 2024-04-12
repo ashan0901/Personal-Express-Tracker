@@ -13,11 +13,11 @@
 
 // export default rootReducer;
 
-import { combineReducers } from "redux";
-import errorReducer from "./errorReducer";
-import walletReducer from "./walletReducer";
+// import { combineReducers } from "redux";
+// import errorReducer from "./errorReducer";
+// import walletReducer from "./walletReducer";
 
-export default combineReducers({
-  errros: errorReducer,
-  wallet: walletReducer,
-});
+// export default combineReducers({
+//   errros: errorReducer,
+//   wallet: walletReducer,
+// });

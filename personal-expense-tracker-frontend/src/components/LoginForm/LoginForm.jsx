@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { getWallets } from '../../actions/projectActions';
 import { useDispatch } from 'react-redux';
+import Nav from '../shared/Nav';
 
 
 function Login() {
@@ -37,8 +38,9 @@ function Login() {
   };
 
   return (
-    
+    <div><Nav />
     <div className='bodyclass1'>
+      
       <div className="wrapper">
         <form onSubmit={handleSubmit}>
           <h1>Login</h1>
@@ -68,6 +70,7 @@ function Login() {
           </div> 
 
         </form>
+    </div>
     </div>
     </div>
   );

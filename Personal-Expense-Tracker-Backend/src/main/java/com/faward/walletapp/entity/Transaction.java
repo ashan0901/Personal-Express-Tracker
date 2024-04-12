@@ -1,7 +1,6 @@
 package com.faward.walletapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,9 +28,5 @@ public class Transaction {
     @DBRef
     //@JsonIgnore
     private Wallet wallet;
-
-//    public void  setTransactionDate(){
-//        this.transactionDate = new Date();
-//    }
 
 }

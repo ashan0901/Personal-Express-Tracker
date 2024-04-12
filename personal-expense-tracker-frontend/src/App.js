@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Nav from "./components/shared/Nav";
+// import Nav from "./components/shared/Nav";
 import Welcome from "./components/Welcome";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -19,11 +19,11 @@ function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Nav />
+        {/* <Nav />    */}
         <Routes>
           <Route path="/" exact element={<Welcome />} />
           <Route path="/:userId" element={<Dashboard />} />
-          <Route path="/wall/add/:id" exact element={<CreateWallet />} />
+          <Route path="/wall/add/:userId" exact element={<CreateWallet />} />
           <Route path="/updatewallet/:id" exact element={<UpdateWallet />} />
           <Route
             path="/user/:userId/wallet/:walletId"

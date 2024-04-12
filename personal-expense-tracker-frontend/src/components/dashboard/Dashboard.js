@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { getWallets } from "../../actions/projectActions";
 import DashboardItem from "./DashboardItem";
+import Nav1 from "../shared/Nav1";
 
 const Dashboard = ({ getWallets, wallets }) => {
   const { userId } = useParams(); // Adapted to use userId
@@ -30,6 +31,8 @@ const Dashboard = ({ getWallets, wallets }) => {
 
   return (
     <div className="projects">
+      <Nav1 />
+
       <div className="container">
         <div className="row">
           <div className="col-md-12">
@@ -40,6 +43,7 @@ const Dashboard = ({ getWallets, wallets }) => {
                 Create new wallet
               </Link>
             </div>
+            <br />
             <br />
             <div className="card text-center">
               <div className="card-header bg-success text-white">

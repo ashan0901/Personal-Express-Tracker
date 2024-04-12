@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { getWallet } from "../../../actions/projectActions";
 import axios from "axios";
+import Nav1 from "../../shared/Nav1";
 
 const UpdateWallet = ({ wallet, getWallet }) => {
   const { id } = useParams();
@@ -50,58 +51,62 @@ const UpdateWallet = ({ wallet, getWallet }) => {
   };
 
   return (
-    <div className="project">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-8 m-auto">
-            <h5 className="display-4 text-center">Update Wallet</h5>
-            <hr />
-            <form onSubmit={submitHandler}>
-              <div className="form-group">
+    <div>
+      <Nav1 />
+
+      <div className="project">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-8 m-auto">
+              <h5 className="display-4 text-center">Update Wallet</h5>
+              <hr />
+              <form onSubmit={submitHandler}>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    value={walletState.name}
+                    onChange={(event) => changeHandler(event, "name")}
+                    className="form-control form-control-lg"
+                    placeholder="Account Name"
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    value={walletState.accountNumber}
+                    onChange={(event) => changeHandler(event, "accountNumber")}
+                    className="form-control form-control-lg"
+                    placeholder="Account No"
+                  />
+                </div>
+                <div className="form-group">
+                  <textarea
+                    className="form-control form-control-lg"
+                    value={walletState.description}
+                    onChange={(event) => changeHandler(event, "description")}
+                    placeholder="Description"
+                  ></textarea>
+                </div>
+                <div className="form-group">
+                  <select
+                    className="form-control form-control-lg"
+                    value={walletState.priority}
+                    onChange={(event) => changeHandler(event, "priority")}
+                    name="priority"
+                  >
+                    <option value={3}>Display Priority</option>
+                    <option value={1}>High</option>
+                    <option value={2}>Medium</option>
+                    <option value={3}>Low</option>
+                  </select>
+                </div>
                 <input
-                  type="text"
-                  value={walletState.name}
-                  onChange={(event) => changeHandler(event, "name")}
-                  className="form-control form-control-lg"
-                  placeholder="Account Name"
+                  type="submit"
+                  className="btn btn-primary btn-block mt-4"
+                  value="Update"
                 />
-              </div>
-              <div className="form-group">
-                <input
-                  type="text"
-                  value={walletState.accountNumber}
-                  onChange={(event) => changeHandler(event, "accountNumber")}
-                  className="form-control form-control-lg"
-                  placeholder="Account No"
-                />
-              </div>
-              <div className="form-group">
-                <textarea
-                  className="form-control form-control-lg"
-                  value={walletState.description}
-                  onChange={(event) => changeHandler(event, "description")}
-                  placeholder="Description"
-                ></textarea>
-              </div>
-              <div className="form-group">
-                <select
-                  className="form-control form-control-lg"
-                  value={walletState.priority}
-                  onChange={(event) => changeHandler(event, "priority")}
-                  name="priority"
-                >
-                  <option value={3}>Display Priority</option>
-                  <option value={1}>High</option>
-                  <option value={2}>Medium</option>
-                  <option value={3}>Low</option>
-                </select>
-              </div>
-              <input
-                type="submit"
-                className="btn btn-primary btn-block mt-4"
-                value="Update"
-              />
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Register.css';
 import { Link , useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Nav from '../shared/Nav';
 
 
 
@@ -41,7 +42,11 @@ function Signup() {
   };
 
   return (
+    
+    <div>
+      <Nav />
     <div className='bodyclass1'>
+      
       <div className="wrapper">
         <form onSubmit={handleSubmit}>
           <h1>Sign Up</h1>
@@ -78,6 +83,7 @@ function Signup() {
           </div>
 
         </form>
+    </div>
     </div>
     </div>
   )

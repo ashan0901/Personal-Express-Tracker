@@ -34,15 +34,30 @@ public class TransactionService {
         //TODO
         throw new WalletException("Transaction with "+id+" does not exists!");
     }
-    public Transaction createOrUpdate(String walletId,Transaction transaction){
-       Optional<Wallet> wallet = wallRepository.findById(walletId);
-       if(wallet.isPresent()) {
-           transaction.setWallet(wallet.get());
-           transactionRepository.save(transaction);
-           return transaction;
-       }
-       return null;
+
+    public Transaction createOrUpdate(String walletId, Transaction transaction) {
+        Optional<Wallet> walletOpt = wallRepository.findById(walletId);
+        if (!walletOpt.isPresent()) {
+            throw new WalletException("Wallet with ID " + walletId + " not found.");
+        }
+
+        Wallet wallet = walletOpt.get();
+        adjustWalletBalance(transaction, wallet);
+        transaction.setWallet(wallet);
+        transactionRepository.save(transaction);
+        wallRepository.save(wallet);  // Save the updated wallet back to the repository
+        return transaction;
     }
+
+    private void adjustWalletBalance(Transaction transaction, Wallet wallet) {
+        if (transaction.getType() == 1) {  // Income
+            wallet.setCurrentBalance(wallet.getCurrentBalance() + transaction.getAmount());
+        } else if (transaction.getType() == 2) {  // Expense
+            wallet.setCurrentBalance(wallet.getCurrentBalance() - transaction.getAmount());
+        }
+        // For other types like transfer, additional logic may be needed
+    }
+
     public  boolean delete(String wallet_id,String id){
         Optional<Wallet> wallet = wallRepository.findById(wallet_id);
         if(wallet.isPresent()) {
