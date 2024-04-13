@@ -3,6 +3,7 @@ import './Register.css';
 import { Link , useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Nav from '../shared/Nav';
+import backgroundImage from './image10.jpg';
 
 
 
@@ -45,7 +46,7 @@ function Signup() {
     
     <div>
       <Nav />
-    <div className='bodyclass1'>
+    <div className='bodyclass1' style={{ backgroundImage: `url(${backgroundImage})` }}>
       
       <div className="wrapper">
         <form onSubmit={handleSubmit}>

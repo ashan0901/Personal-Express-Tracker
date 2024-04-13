@@ -5,6 +5,7 @@ import axios from 'axios';
 import { getWallets } from '../../actions/projectActions';
 import { useDispatch } from 'react-redux';
 import Nav from '../shared/Nav';
+import backgroundImage from './image10.jpg';
 
 
 function Login() {
@@ -39,7 +40,7 @@ function Login() {
 
   return (
     <div><Nav />
-    <div className='bodyclass1'>
+    <div className='bodyclass1' style={{ backgroundImage: `url(${backgroundImage})` }}>
       
       <div className="wrapper">
         <form onSubmit={handleSubmit}>

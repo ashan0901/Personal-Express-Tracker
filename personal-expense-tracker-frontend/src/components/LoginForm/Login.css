@@ -6,14 +6,14 @@
     box-sizing: border-box;
   }
 
-  .bodyclass {
+  .bodyclass1 {
  
     font-family:'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('C:\Users\ashan\Desktop\PET\personal-expense-tracker-frontend\src\components\Assets\image10.jpg') no-repeat;
+    /* background: url('C:\Users\ashan\Desktop\PET\personal-expense-tracker-frontend\src\components\Assets\image10.jpg') no-repeat; */
     background-size: cover;
     background-position: center;
     margin-left:0px;
