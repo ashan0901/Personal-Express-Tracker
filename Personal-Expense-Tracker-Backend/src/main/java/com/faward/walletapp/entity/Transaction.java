@@ -21,9 +21,11 @@ public class Transaction {
 
     private String description;
 
-    private int type;//1 for income,2 for expence,3 for trasfer
+    private int type;//1 for income,2 for expence
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date transactionDate;
+
+    private int purpose;
 
     @DBRef
     //@JsonIgnore

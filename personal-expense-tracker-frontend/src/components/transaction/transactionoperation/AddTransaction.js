@@ -13,6 +13,7 @@ const AddTransaction = ({ createTransaction }) => {
     description: "",
     type: "1",
     date: "",
+    purpose: "0",
   });
   const [wallet, setWallet] = useState({ name: "Loading..." });
 
@@ -34,7 +35,12 @@ const AddTransaction = ({ createTransaction }) => {
   }, [userId, walletId]); // Dependencies for useEffect
 
   const changeHandler = (event, fieldName) => {
-    setTransaction({ ...transaction, [fieldName]: event.target.value });
+    const value = event.target.value;
+    setTransaction((prev) => ({
+      ...prev,
+      [fieldName]: value,
+      ...(fieldName === "type" && value === "1" && { purpose: "0" }),
+    }));
   };
 
   const handleSubmit = (event) => {
@@ -44,6 +50,7 @@ const AddTransaction = ({ createTransaction }) => {
       description: transaction.description,
       type: transaction.type,
       transactionDate: transaction.date,
+      purpose: transaction.purpose,
     };
 
     // Adjusted to pass both userId and walletId to the createTransaction action
@@ -62,7 +69,7 @@ const AddTransaction = ({ createTransaction }) => {
                 to={`/user/${userId}/wallet/${walletId}`}
                 className="btn btn-info btn-lg"
               >
-                Back to Wallet
+                Back to Transactions
               </Link>
               <h4 className="display-4 text-center">Record New Transaction</h4>
               <p className="lead text-center">{wallet.name}</p>
@@ -117,6 +124,30 @@ const AddTransaction = ({ createTransaction }) => {
                       Expense
                     </label>
                   </div>
+
+                  <br />
+                  <br />
+
+                  {transaction.type === "2" && (
+                    <div className="form-group">
+                      <label htmlFor="transactionPurpose">Purpose:</label>
+                      <select
+                        id="transactionPurpose"
+                        className="form-control"
+                        value={transaction.purpose}
+                        onChange={(event) => changeHandler(event, "purpose")}
+                      >
+                        <option value="0">Select Purpose</option>
+                        <option value="1">Food</option>
+                        <option value="2">Transport</option>
+                        <option value="3">Entertainment</option>
+                        <option value="4">Communication</option>
+                        <option value="5">Cloths</option>
+                        <option value="6">Toiletry</option>
+                        <option value="7">Other</option>
+                      </select>
+                    </div>
+                  )}
                 </div>
                 <br />
                 <h6>Transaction Date</h6>
