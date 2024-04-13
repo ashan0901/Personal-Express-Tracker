@@ -22,7 +22,7 @@ const AddTransaction = ({ createTransaction }) => {
     const fetchWalletDetails = async () => {
       try {
         const walletResponse = await axios.get(
-          `http://localhost:8080/wallet/${userId}`
+          `http://localhost:8080/wallet/${userId}/${walletId}`
         );
         setWallet(walletResponse.data);
       } catch (error) {
@@ -55,7 +55,8 @@ const AddTransaction = ({ createTransaction }) => {
 
     // Adjusted to pass both userId and walletId to the createTransaction action
     createTransaction(newTransaction, navigate, walletId, userId);
-    console.log(newTransaction);
+
+    console.log(wallet.currentBalance);
   };
 
   return (

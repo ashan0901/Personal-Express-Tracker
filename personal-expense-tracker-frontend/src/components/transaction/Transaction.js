@@ -139,7 +139,11 @@ const Transaction = () => {
     <div>
       <Nav1 />
       <div className="container">
-        <Link to={`/${userId}`} className="btn btn-default btn-lg mb-3">
+        <Link
+          to={`/${userId}`}
+          className="btn btn-info btn-lg mb-3"
+          style={{ marginRight: "20px" }}
+        >
           Back to Dashboard
         </Link>
         <Link
@@ -156,7 +160,7 @@ const Transaction = () => {
           </div>
         </div>
         <hr />
-        <div class="row justify-content-center">
+        <div className="row justify-content-center">
           <div className="col-md-4">
             <Doughnut data={doughnutData} />
           </div>
