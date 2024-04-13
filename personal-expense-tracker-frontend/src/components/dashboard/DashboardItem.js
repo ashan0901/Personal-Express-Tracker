@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { deleteWallet } from "../../actions/projectActions";
+import "./loadingScreen.css";
+import { useNavigate } from "react-router-dom";
 
 const DashboardItem = ({ wallet, deleteWallet }) => {
+  const [loading, setLoading] = useState(false);
+
   // Assuming `userId` is passed down from parent component (e.g., Dashboard) or derived from the URL
   const { userId } = useParams();
+  const navigate = useNavigate();
 
   const deleteBtnClick = () => {
     if (window.confirm("Are you sure you want to delete this wallet?")) {
@@ -13,8 +18,22 @@ const DashboardItem = ({ wallet, deleteWallet }) => {
     }
   };
 
+  const handleViewTransactionsClick = () => {
+    setLoading(true);
+    // Simulate a short delay or put this inside an async operation if needed
+    setTimeout(() => {
+      navigate(`/user/${userId}/wallet/${wallet.id}`);
+      setLoading(false);
+    }, 1000); // Adjust this delay as needed
+  };
+
   return (
     <div className="container">
+      {loading && (
+        <div className="loading-screen">
+          <div className="spinner"></div>
+        </div>
+      )}
       <div className="card card-body bg-light mb-3">
         <div className="row">
           <div className="col-lg-4 col-md-3 col-6">
@@ -28,14 +47,17 @@ const DashboardItem = ({ wallet, deleteWallet }) => {
           </div>
           <div className="col-md-4 col-12 d-lg-block">
             <ul className="list-group">
-              <Link to={`/user/${userId}/wallet/${wallet.id}`}>
+              <div
+                onClick={handleViewTransactionsClick}
+                style={{ cursor: "pointer" }}
+              >
                 <li className="list-group-item board text-success">
                   <i className="fa fa-flag-checkered pr-1">
                     {" "}
                     View Transactions{" "}
                   </i>
                 </li>
-              </Link>
+              </div>
               <Link to={`/updatewallet/${wallet.id}`}>
                 <li className="list-group-item update text-info">
                   <i className="fa fa-edit pr-1"> Update Account Info</i>
