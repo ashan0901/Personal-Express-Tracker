@@ -40,7 +40,7 @@ function Login() {
 
   return (
     <div><Nav />
-    <div className='bodyclass1' style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <div className='loginbody' style={{ backgroundImage: `url(${backgroundImage})` }}>
       
       <div className="wrapper">
         <form onSubmit={handleSubmit}>
