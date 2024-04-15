@@ -179,6 +179,7 @@ const Transaction = () => {
               <th scope="col">Amount</th>
               <th scope="col">Type</th>
               <th scope="col">Purpose</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -211,6 +212,13 @@ const Transaction = () => {
                     : transaction.purpose === 6
                     ? "Toiletry"
                     : "Others"}
+                </td>
+                <td>
+                  <Link to={`/user/${userId}/wallet/${walletId}`}>
+                    <li className="list-group-item delete text-danger">
+                      <i className="fa fa-minus-circle pr-1"> Delete</i>
+                    </li>
+                  </Link>
                 </td>
               </tr>
             ))}
