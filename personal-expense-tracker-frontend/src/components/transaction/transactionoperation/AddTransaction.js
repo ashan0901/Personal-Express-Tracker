@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { createTransaction } from "../../../actions/projectActions";
 import axios from "axios";
 import Nav1 from "../../shared/Nav1";
+import Swal from "sweetalert2";
 
 const AddTransaction = ({ createTransaction }) => {
   const { walletId, userId } = useParams(); // Adjusted to get both walletId and userId from the URL
@@ -55,7 +56,13 @@ const AddTransaction = ({ createTransaction }) => {
 
     // Adjusted to pass both userId and walletId to the createTransaction action
     createTransaction(newTransaction, navigate, walletId, userId);
-
+    Swal.fire({
+      title: "Success!",
+      text: "Transaction Successfully Added",
+      icon: "success",
+      confirmButtonText: "Great!",
+      didClose: () => navigate(`/user/${userId}/wallet/${walletId}`),
+    });
     console.log(wallet.currentBalance);
   };
 
