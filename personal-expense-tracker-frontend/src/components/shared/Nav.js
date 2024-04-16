@@ -4,7 +4,10 @@ import "./Nav.css";
 
 function Nav() {
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-4">
+    <nav
+      className="navbar navbar-expand-sm navbar-dark bg-primary mb-0"
+      style={{ padding: 10 }}
+    >
       <div className="container">
         <Link className="navbar-brand" to="/">
           Expense Manager
@@ -21,9 +24,9 @@ function Nav() {
         <div className="collapse navbar-collapse" id="mobile-nav">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              {/* <Link className="nav-link" to={`/`}>
-                Dashboard
-              </Link> */}
+              <Link className="nav-link" to={`/`}>
+                About Us
+              </Link>
             </li>
           </ul>
 
