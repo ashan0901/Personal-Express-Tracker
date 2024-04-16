@@ -4,6 +4,8 @@ import { Link, useParams } from "react-router-dom";
 import Nav1 from "../shared/Nav1";
 import { Doughnut } from "react-chartjs-2";
 import "chart.js/auto";
+import Swal from "sweetalert2";
+//import { deleteTransaction } from "../../actions/projectActions";
 
 const Transaction = () => {
   const { userId, walletId } = useParams();
@@ -135,6 +137,45 @@ const Transaction = () => {
     ],
   };
 
+  const deleteTrnsBtnClick = (transactionId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Do you want to delete this transaction?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(
+            `http://localhost:8080/transaction/${walletId}/${transactionId}`
+          )
+          .then(() => {
+            Swal.fire(
+              "Deleted!",
+              "The transaction has been deleted.",
+              "success"
+            ).then(() => {
+              setTimeout(() => {
+                window.location.reload(true);
+              }, 200); // Refresh the page after a 2-second delay
+            });
+          })
+          .catch((err) => {
+            console.error("Error deleting transaction:", err);
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Something went wrong!",
+              footer: "Please try again later.",
+            });
+          });
+      }
+    });
+  };
+
   return (
     <div>
       <Nav1 />
@@ -214,7 +255,10 @@ const Transaction = () => {
                     : "Others"}
                 </td>
                 <td>
-                  <Link to={`/user/${userId}/wallet/${walletId}`}>
+                  <Link
+                    to={`/user/${userId}/wallet/${walletId}`}
+                    onClick={() => deleteTrnsBtnClick(transaction.id)}
+                  >
                     <li className="list-group-item delete text-danger">
                       <i className="fa fa-minus-circle pr-1"> Delete</i>
                     </li>
