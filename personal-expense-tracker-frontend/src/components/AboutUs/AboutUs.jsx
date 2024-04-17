@@ -1,5 +1,6 @@
 import React from "react";
 import "./AboutUs.css";
+import Nav from "../shared/Nav";
 
 function AboutUs() {
   let message =
@@ -11,6 +12,8 @@ function AboutUs() {
   }*/
 
   return (
+    <div>
+      <Nav  />
     <section className="section-white">
 
 
@@ -29,7 +32,7 @@ function AboutUs() {
             <p className="section-subtitle">{message}</p>
           </div>
         </div>
-        <div className="row" style={{ display: "flex" , width: "100%" }}>
+        <div className="row1">
           <div className="col4">
             <div className="team-item">
               <img alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR38xBLKoM7n78xMUuL51iKMmpd-Bu3nBzWdyzsaYmm1-U8h7atjRmYerABn5Y4wNgo07Y&usqp=CAU" className="team-img"  />
@@ -65,6 +68,7 @@ function AboutUs() {
         </div>
       </div>
     </section>
+    </div>
   );
 }
 
