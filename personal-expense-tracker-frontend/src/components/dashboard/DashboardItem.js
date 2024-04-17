@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { deleteWallet } from "../../actions/projectActions";
 import "./loadingScreen.css";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const DashboardItem = ({ wallet, deleteWallet }) => {
   const [loading, setLoading] = useState(false);
@@ -13,9 +14,27 @@ const DashboardItem = ({ wallet, deleteWallet }) => {
   const navigate = useNavigate();
 
   const deleteBtnClick = () => {
-    if (window.confirm("Are you sure you want to delete this wallet?")) {
-      deleteWallet(wallet.id);
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Do you want to delete this wallet?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteWallet(wallet.id);
+        Swal.fire(
+          "Deleted!",
+          "Your wallet has been successfully deleted.",
+          "success"
+        );
+      } else if (result.isDismissed) {
+        Swal.fire("Cancelled", "Your wallet is safe :)", "error");
+      }
+    });
   };
 
   const handleViewTransactionsClick = () => {
@@ -58,7 +77,7 @@ const DashboardItem = ({ wallet, deleteWallet }) => {
                   </i>
                 </li>
               </div>
-              <Link to={`/updatewallet/${wallet.id}`}>
+              <Link to={`/updatewallet/${userId}/${wallet.id}`}>
                 <li className="list-group-item update text-info">
                   <i className="fa fa-edit pr-1"> Update Account Info</i>
                 </li>

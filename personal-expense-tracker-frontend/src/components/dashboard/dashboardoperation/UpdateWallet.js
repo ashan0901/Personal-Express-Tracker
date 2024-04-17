@@ -4,9 +4,10 @@ import { connect } from "react-redux";
 import { getWallet } from "../../../actions/projectActions";
 import axios from "axios";
 import Nav1 from "../../shared/Nav1";
+import Swal from "sweetalert2";
 
 const UpdateWallet = ({ wallet, getWallet }) => {
-  const { id } = useParams();
+  const { walletId, userId } = useParams();
   const navigate = useNavigate();
 
   const [walletState, setWalletState] = useState({
@@ -14,11 +15,12 @@ const UpdateWallet = ({ wallet, getWallet }) => {
     accountNumber: "",
     description: "",
     priority: "",
+    limit: "",
   });
 
   useEffect(() => {
-    getWallet(id); // Assuming this action updates the Redux store, which then updates the 'wallet' prop
-  }, [getWallet, id]);
+    getWallet(walletId); // Assuming this action updates the Redux store, which then updates the 'wallet' prop
+  }, [getWallet, walletId, userId]);
 
   useEffect(() => {
     if (wallet) {
@@ -28,6 +30,7 @@ const UpdateWallet = ({ wallet, getWallet }) => {
         description: wallet.description || "",
         // Ensure priority is not null; use a default value or an empty string
         priority: wallet.priority || "", // You can replace "" with a default value like "3" for Low if that makes sense for your app
+        limit: wallet.limit || "", // You can replace "" with a default value like "0" if that makes sense for your app
       });
     }
   }, [wallet]);
@@ -42,12 +45,19 @@ const UpdateWallet = ({ wallet, getWallet }) => {
   const submitHandler = (event) => {
     event.preventDefault();
 
+    console.log(walletId);
+    console.log(userId);
     axios
-      .put(`http://localhost:8080/wallet/${id}`, walletState)
-      .then((res) => {
-        navigate("/dashboard");
-      })
+      .put(`http://localhost:8080/wallet/${userId}/${walletId}`, walletState)
+      .then((res) => {})
       .catch((err) => console.log(err));
+    Swal.fire({
+      title: "Success!",
+      text: "Wallet Updated Successfully",
+      icon: "success",
+      confirmButtonText: "Great!",
+      didClose: () => navigate(`/${userId}`),
+    });
   };
 
   return (
@@ -70,6 +80,7 @@ const UpdateWallet = ({ wallet, getWallet }) => {
                     placeholder="Account Name"
                   />
                 </div>
+                <br />
                 <div className="form-group">
                   <input
                     type="text"
@@ -79,6 +90,7 @@ const UpdateWallet = ({ wallet, getWallet }) => {
                     placeholder="Account No"
                   />
                 </div>
+                <br />
                 <div className="form-group">
                   <textarea
                     className="form-control form-control-lg"
@@ -87,6 +99,17 @@ const UpdateWallet = ({ wallet, getWallet }) => {
                     placeholder="Description"
                   ></textarea>
                 </div>
+                <br />
+                <div className="form-group">
+                  <input
+                    type="number"
+                    value={walletState.limit}
+                    onChange={(event) => changeHandler(event, "limit")}
+                    className="form-control form-control-lg"
+                    placeholder="Limit"
+                  />
+                </div>
+                <br />
                 <div className="form-group">
                   <select
                     className="form-control form-control-lg"
@@ -100,6 +123,7 @@ const UpdateWallet = ({ wallet, getWallet }) => {
                     <option value={3}>Low</option>
                   </select>
                 </div>
+                <br />
                 <input
                   type="submit"
                   className="btn btn-primary btn-block mt-4"
