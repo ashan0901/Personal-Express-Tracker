@@ -19,10 +19,12 @@ function Nav1() {
         Swal.fire({
           title: "Logging out...",
           text: "Please wait.",
+          showConfirmButton: false,
           timerProgressBar: true,
           onBeforeOpen: () => {
             Swal.showLoading();
           },
+
           willClose: () => {
             // This is where you would handle the actual logout logic
             // For example, clearing the session, redirecting the user, etc.
@@ -40,10 +42,8 @@ function Nav1() {
 
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-4">
-      <div className="container">
-        <Link className="navbar-brand" to="/">
-          Expense Manager
-        </Link>
+      <div className="container" style={{ fontSize: "18px" }}>
+        <Link className="navbar-brand">Expense Manager</Link>
         <button
           className="navbar-toggler"
           type="button"

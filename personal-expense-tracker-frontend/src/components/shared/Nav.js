@@ -22,7 +22,10 @@ function Nav() {
         </button>
 
         <div className="collapse navbar-collapse" id="mobile-nav">
-          <ul className="navbar-nav mr-auto">
+          <ul
+            className="navbar-nav navbar-right"
+            style={{ marginLeft: "auto" }}
+          >
             <li className="nav-item">
               <Link className="nav-link" to={`/`}>
                 About Us
@@ -30,7 +33,7 @@ function Nav() {
             </li>
           </ul>
 
-          {/* <ul className="navbar-nav ml-auto">
+          <ul className="navbar-nav mr-auto">
             <li className="nav-item">
               <Link className="nav-link" to="/register">
                 Sign Up
@@ -41,7 +44,7 @@ function Nav() {
                 Login
               </Link>
             </li>
-          </ul> */}
+          </ul>
         </div>
       </div>
     </nav>
