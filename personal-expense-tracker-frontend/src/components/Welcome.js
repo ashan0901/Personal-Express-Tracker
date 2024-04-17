@@ -11,7 +11,7 @@ class Welcome extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-4">Personal Expense Manager</h1>
+                <h1 className="display-3 mb-4">Personal Expense Manager hy</h1>
                 <p className="lead">
                   Create your account to manage your daily expense and income
                 </p>
