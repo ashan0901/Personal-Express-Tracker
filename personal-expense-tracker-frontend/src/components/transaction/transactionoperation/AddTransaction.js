@@ -14,7 +14,7 @@ const AddTransaction = ({ createTransaction }) => {
     description: "",
     type: "1",
     date: "",
-    purpose: "7",
+    purpose: "0",
   });
   const [wallet, setWallet] = useState({ name: "Loading..." });
 
@@ -145,13 +145,14 @@ const AddTransaction = ({ createTransaction }) => {
                         value={transaction.purpose}
                         onChange={(event) => changeHandler(event, "purpose")}
                       >
-                        <option value="7">Other</option>
+                        <option value="0">Select Purpose</option>
                         <option value="1">Food</option>
                         <option value="2">Transport</option>
                         <option value="3">Entertainment</option>
                         <option value="4">Communication</option>
                         <option value="5">Cloths</option>
                         <option value="6">Toiletry</option>
+                        <option value="7">Other</option>
                       </select>
                     </div>
                   )}
