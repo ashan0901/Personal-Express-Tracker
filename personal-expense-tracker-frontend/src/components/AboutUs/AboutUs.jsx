@@ -29,8 +29,8 @@ function AboutUs() {
             <p className="section-subtitle">{message}</p>
           </div>
         </div>
-        <div className="row" style={{ display: "flex" }}>
-          <div className="col-md-4">
+        <div className="row" style={{ display: "flex" , width: "100%" }}>
+          <div className="col4">
             <div className="team-item">
               <img alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR38xBLKoM7n78xMUuL51iKMmpd-Bu3nBzWdyzsaYmm1-U8h7atjRmYerABn5Y4wNgo07Y&usqp=CAU" className="team-img"  />
               <h3 class="a">Our Vision</h3>
@@ -40,7 +40,7 @@ function AboutUs() {
               </div>
             </div>
           </div>
-          <div className="col-md-4">
+          <div className="col4">
             <div className="team-item">
               <img alt="" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSmasqV6EcwCeFRUFHrKXF_Y5NZMP85OYqY0iCcOh4riYgelBcY" className="team-img"  />
               <h3 class="a">Our Story</h3>
@@ -51,7 +51,7 @@ function AboutUs() {
               </div>
             </div>
           </div>
-          <div className="col-md-4">
+          <div className="col4">
             <div className="team-item">
               <img alt="" src="https://media.istockphoto.com/id/1196085007/photo/businessman-on-blurred-background-using-3d-rendering-target.jpg?s=612x612&w=0&k=20&c=34STriu0gdJiJ4_UegmU2hHiea-XVLp8bfW9UkacuWM=" className="team-img"  />
               <h3 class="a">Our Mission</h3>
