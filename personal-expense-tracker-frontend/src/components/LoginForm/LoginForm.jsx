@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { getWallets } from '../../actions/projectActions';
 import Nav from '../shared/Nav';
-import backgroundImage from './image10.jpg';
+import backgroundVideo from './v1.mp4';
 import './Login.css';
 import Swal from'sweetalert2';
 
@@ -52,8 +52,12 @@ function Login() {
   return (
     <div>
       <Nav />
-      <div className='loginbody' style={{ backgroundImage: `url(${backgroundImage})` }}>
-        <div className="wrapper">
+      <div className='loginbody'>
+        {/* Background video */}
+        <video autoPlay loop muted style={{ position: "absolute", width: "100%", left: 0, top: 0, height: "100%", objectFit: "cover", zIndex: -1 }}>
+          <source src={backgroundVideo} type="video/mp4" />
+        </video>
+        <div className="wrapper" style={{marginBottom: '100px',marginTop:'100px',paddingTop: '100px',paddingBottom: '100px'}}>
           <form onSubmit={handleSubmit}>
             <h1>Login</h1>
             <div className="input-box">
@@ -64,7 +68,7 @@ function Login() {
             </div>
             <button className="loginbtn" type="submit">Login</button>
             <div className="login-link">
-              <p>Not Registered?<Link to="/register">register</Link></p>
+              <p>Not Registered ?&nbsp;<Link to="/register">register</Link></p>
             </div>
           </form>
         </div>

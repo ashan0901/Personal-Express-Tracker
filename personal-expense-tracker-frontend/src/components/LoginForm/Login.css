@@ -8,11 +8,11 @@
 
   .loginbody {
  
-    font-family:'Poppins', sans-serif;
+    /* font-family:'Poppins', sans-serif; */
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 88.5vh;
     /* background: url('C:\Users\ashan\Desktop\PET\personal-expense-tracker-frontend\src\components\Assets\image10.jpg') no-repeat; */
     background-size: cover;
     background-position: center;
