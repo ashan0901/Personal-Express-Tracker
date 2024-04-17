@@ -68,7 +68,7 @@ function Signup() {
       <div className='bodyclass1' style={{ backgroundImage: `url(${backgroundImage})` }}>
         <div className="wrapper">
           <form onSubmit={handleSubmit}>
-            <h1>Sign Up</h1>
+            <h1>Sign Up h</h1>
             <div className="input-box">
               <input type="text" placeholder="First Name" required name="firstname" onChange={handleChange}/>
             </div>
