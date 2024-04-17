@@ -35,7 +35,8 @@ function AboutUs() {
         <div className="row1">
           <div className="col4">
             <div className="team-item">
-              <img alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR38xBLKoM7n78xMUuL51iKMmpd-Bu3nBzWdyzsaYmm1-U8h7atjRmYerABn5Y4wNgo07Y&usqp=CAU" className="team-img"  />
+            <div><img alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR38xBLKoM7n78xMUuL51iKMmpd-Bu3nBzWdyzsaYmm1-U8h7atjRmYerABn5Y4wNgo07Y&usqp=CAU" className="team-img"  /></div>
+              <br/>
               <h3 class="a">Our Vision</h3>
               <div className="team-info">
                 <p class="main">Our vision for the personal expense tracker is to become the go-to platform for individuals seeking control and clarity in their finances. We envision a future where managing expenses is effortless and insightful, where users can confidently navigate their financial journeys with ease. Our goal is to inspire financial empowerment and transform the way people interact with their money. </p>
@@ -45,18 +46,19 @@ function AboutUs() {
           </div>
           <div className="col4">
             <div className="team-item">
-              <img alt="" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSmasqV6EcwCeFRUFHrKXF_Y5NZMP85OYqY0iCcOh4riYgelBcY" className="team-img"  />
+            <div><img alt="" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSmasqV6EcwCeFRUFHrKXF_Y5NZMP85OYqY0iCcOh4riYgelBcY" className="team-img"  /></div>
+              <br/>
               <h3 class="a">Our Story</h3>
               <div className="team-info">
-                <p class="main">Born from passion and frustration, our journey began with a team united to revolutionize personal finance. Through dedication and feedback, we created a solution to democratize financial management: our Personal Expense Tracker app. </p>
-                <p class="main">With unwavering commitment, we embark on this journey together, empowering users to seize control of their financial futures. Welcome to a brighter tomorrow, where every dollar counts.</p>
+                <p class="main">From a foundation of passion and frustration, our team embarked on a journey to revolutionize personal finance. Through dedication and feedback, we crafted the Personal Expense Tracker app, democratizing financial management. With unwavering commitment, we empower users to control their financial futures, ushering in a brighter tomorrow where every dollar counts.</p>
                 
               </div>
             </div>
           </div>
           <div className="col4">
             <div className="team-item">
-              <img alt="" src="https://media.istockphoto.com/id/1196085007/photo/businessman-on-blurred-background-using-3d-rendering-target.jpg?s=612x612&w=0&k=20&c=34STriu0gdJiJ4_UegmU2hHiea-XVLp8bfW9UkacuWM=" className="team-img"  />
+              <div><img alt="" src="https://media.istockphoto.com/id/1196085007/photo/businessman-on-blurred-background-using-3d-rendering-target.jpg?s=612x612&w=0&k=20&c=34STriu0gdJiJ4_UegmU2hHiea-XVLp8bfW9UkacuWM=" className="team-img"  /></div>
+              <br/>
               <h3 class="a">Our Mission</h3>
               <div className="team-info">
                 <p class="main">Our mission is to revolutionize personal finance management by offering an intuitive expense tracking solution. We aim to empower users to make informed financial decisions, providing tools that promote financial well-being and stability. Through continuous innovation and user-centric design, we strive to simplify the process of managing expenses, enabling users to achieve financial freedom.
