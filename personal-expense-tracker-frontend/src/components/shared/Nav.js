@@ -27,7 +27,7 @@ function Nav() {
             style={{ marginLeft: "auto" }}
           >
             <li className="nav-item">
-              <Link className="nav-link" to={`/`}>
+              <Link className="nav-link" to={`/aboutus`}>
                 About Us
               </Link>
             </li>

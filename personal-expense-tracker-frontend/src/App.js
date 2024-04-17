@@ -13,6 +13,7 @@ import store from "./Store";
 import UpdateWallet from "./components/dashboard/dashboardoperation/UpdateWallet";
 import Transaction from "./components/transaction/Transaction";
 import AddTransaction from "./components/transaction/transactionoperation/AddTransaction";
+import AboutUs from "./components/AboutUs/AboutUs";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/login" exact element={<LoginForm />} />
           <Route path="/register" exact element={<RegisterForm />} />
+          <Route path="/aboutus" exact element={<AboutUs />} />
         </Routes>
       </BrowserRouter>
     </Provider>
