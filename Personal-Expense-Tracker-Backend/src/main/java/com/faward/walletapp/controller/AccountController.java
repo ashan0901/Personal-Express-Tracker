@@ -3,6 +3,7 @@ import com.faward.walletapp.entity.Account;
 import com.faward.walletapp.entity.Wallet;
 import com.faward.walletapp.service.AccountService;
 import com.faward.walletapp.service.ValidationErrorService;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,12 +24,17 @@ public class AccountController {
         return new ResponseEntity<>(accountService.getById(id),HttpStatus.OK);
     }
 
+
     @PostMapping("/save")
-    public ResponseEntity<?> create(@RequestBody Account account, BindingResult result){
+    public ResponseEntity<?> create(@RequestBody Account account, BindingResult result) {
         ResponseEntity errors = validationService.validate(result);
-        if(errors != null) return errors;
+        if (errors != null) return errors;
+
+        // Hashing the password before saving the account
+        String hashedPassword = BCrypt.hashpw(account.getPassword(), BCrypt.gensalt());
+        account.setPassword(hashedPassword);
 
         Account accountSaved = accountService.create(account);
-        return new ResponseEntity<Account>(accountSaved,HttpStatus.CREATED);
+        return new ResponseEntity<>(accountSaved, HttpStatus.CREATED);
     }
 }
