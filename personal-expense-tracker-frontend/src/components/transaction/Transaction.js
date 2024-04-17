@@ -5,7 +5,7 @@ import Nav1 from "../shared/Nav1";
 import { Doughnut } from "react-chartjs-2";
 import "chart.js/auto";
 import Swal from "sweetalert2";
-//import { deleteTransaction } from "../../actions/projectActions";
+import backgroundVideo from "./v3.mp4";
 
 const Transaction = () => {
   const { userId, walletId } = useParams();
@@ -56,19 +56,24 @@ const Transaction = () => {
     labels: ["Income", "Expense"],
     datasets: [
       {
-        data: transactions.reduce(
-          (acc, transaction) => {
-            if (transaction.type === 1) {
-              // Income
-              acc[0] += transaction.amount;
-            } else if (transaction.type === 2) {
-              // Expense
-              acc[1] += transaction.amount;
-            }
-            return acc;
-          },
-          [0, 0]
-        ),
+        data: transactions
+          .reduce(
+            (acc, transaction) => {
+              if (transaction.type === 1) {
+                // Income
+                acc[0] += transaction.amount;
+              } else if (transaction.type === 2) {
+                // Expense
+                acc[1] += transaction.amount;
+              }
+              return acc;
+            },
+            [0, 0]
+          )
+          .map((amount, _, array) => {
+            const total = array.reduce((total, current) => total + current, 0);
+            return total ? ((amount / total) * 100).toFixed(2) : 0; // Convert to percentage and fix to 2 decimal places
+          }),
         backgroundColor: ["green", "#FF6384"],
         hoverBackgroundColor: ["lightgreen", "pink"],
       },
@@ -179,6 +184,24 @@ const Transaction = () => {
   return (
     <div>
       <Nav1 />
+      {/* Background video */}
+      <video
+        autoPlay
+        loop
+        muted
+        style={{
+          position: "absolute",
+          width: "100%",
+          left: 0,
+          top: 0,
+          height: "100%",
+          objectFit: "cover",
+          zIndex: -1,
+          opacity: 0.2,
+        }}
+      >
+        <source src={backgroundVideo} type="video/mp4" />
+      </video>
       <div className="container">
         <Link
           to={`/${userId}`}
@@ -203,9 +226,15 @@ const Transaction = () => {
         <hr />
         <div className="row justify-content-center">
           <div className="col-md-4">
+            <div style={{ marginLeft: "20%" }}>
+              Perantage of Expenses & Income
+            </div>
             <Doughnut data={doughnutData} />
           </div>
           <div className="col-md-4">
+            <div style={{ marginLeft: "20%" }}>
+              Perantage of Expenses Categories
+            </div>
             <Doughnut data={doughnutData1} />
           </div>
         </div>

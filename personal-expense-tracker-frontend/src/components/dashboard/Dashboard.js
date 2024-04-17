@@ -4,12 +4,29 @@ import { connect } from "react-redux";
 import { getWallets } from "../../actions/projectActions";
 import DashboardItem from "./DashboardItem";
 import Nav1 from "../shared/Nav1";
+import axios from "axios";
+import backgroundVideo from "./v3.mp4";
 
 const Dashboard = ({ getWallets, wallets }) => {
   const { userId } = useParams(); // Adapted to use userId
   const [totalBalance, setTotalBalance] = useState(0.0);
+  const [account, setAccount] = useState({ name: "Loading..." });
 
   useEffect(() => {
+    const fetchAccountDetails = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/account/${userId}`
+        );
+
+        setAccount(response.data);
+      } catch (error) {
+        console.error("Error fetching wallet details:", error);
+        setAccount({ name: "Error fetching wallet name" });
+      }
+    };
+
+    fetchAccountDetails();
     getWallets(userId); // Assume getWallets action can optionally take a userId to fetch wallets for a specific user
   }, [getWallets, userId]);
 
@@ -32,17 +49,51 @@ const Dashboard = ({ getWallets, wallets }) => {
   return (
     <div className="projects">
       <Nav1 />
+      <video
+        autoPlay
+        loop
+        muted
+        style={{
+          position: "absolute",
+          width: "100%",
+          left: 0,
+          top: 0,
+          height: "100%",
+          objectFit: "cover",
+          zIndex: -1,
+          opacity: "0.3",
+        }}
+      >
+        <source src={backgroundVideo} type="video/mp4" />
+      </video>
 
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <h1 className="display-4 text-center">My Wallets</h1>
+            <h1 className="display-4 text-center">
+              Welcome , {account.firstname} {account.lastname}
+            </h1>
             <br />
             <div className="btn-group">
-              <Link to={`/wall/add/${userId}`} className="btn btn-info btn-lg">
-                Create new wallet
-              </Link>
+              <div>
+                <Link
+                  to={`/wall/add/${userId}`}
+                  className="btn btn-info btn-lg"
+                >
+                  Create new wallet
+                </Link>
+              </div>
+              <div
+                style={{
+                  marginLeft: "400px",
+                  fontFamily: "sans-serif",
+                  fontSize: "30px",
+                }}
+              >
+                My Wallets
+              </div>
             </div>
+
             <br />
             <br />
             <div className="card text-center">

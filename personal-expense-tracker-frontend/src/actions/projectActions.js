@@ -66,16 +66,3 @@ export const createTransaction =
       // Consider dispatching GET_ERROR action if you want to handle errors globally
     }
   };
-
-// export const deleteTransaction = (walletId, accountId) => async (dispatch) => {
-//   try {
-//     await axios.delete(
-//       `http://localhost:8080/transaction/${walletId}/${transactionId}`
-//     );
-//     dispatch({ type: DELETE_WALLET, payload: walletId });
-//     console.log("Connected to delete wallet");
-//   } catch (err) {
-//     console.error("Error deleting wallet:", err);
-//     dispatch({ type: GET_ERROR, payload: err.response.data });
-//   }
-// };
