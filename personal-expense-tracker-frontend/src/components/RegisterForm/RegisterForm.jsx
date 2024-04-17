@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Nav from '../shared/Nav';
-import backgroundImage from './image10.jpg';
+// import backgroundImage from './image10.jpg';
 import './Register.css';
 import Swal from'sweetalert2';
+import backgroundVideo from './v1.mp4';
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -65,7 +66,12 @@ function Signup() {
   return (
     <div>
       <Nav />
-      <div className='bodyclass1' style={{ backgroundImage: `url(${backgroundImage})` }}>
+      <div className='bodyclass1'>
+        {/* Background video */}
+        <video autoPlay loop muted style={{ position: "absolute", width: "100%", left: 0, top: 0, height: "100%", objectFit: "cover", zIndex: -1 }}>
+          <source src={backgroundVideo} type="video/mp4" />
+        </video>
+        {/* <div>Ashan</div> */}
         <div className="wrapper">
           <form onSubmit={handleSubmit}>
             <h1>Sign Up</h1>
@@ -89,7 +95,7 @@ function Signup() {
             </div>
             <button type="submit">Sign Up</button>
             <div className="login-link">
-              <p>Already Registered?<Link to="/login">Login</Link></p>
+              <p>Already Registered?&nbsp;<Link to="/login">Login</Link></p>
             </div>
           </form>
          
