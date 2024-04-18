@@ -6,9 +6,12 @@ import picture6 from './Assets/2.jpg'
 import picture7 from './Assets/6.jpg'
 import picture8 from './Assets/8.jpg'
 import './Resources.css'
+import Nav from '../shared/Nav';
 
 const Resources = () => {
   return (
+    <div>
+      <Nav/>
     <div className='resources' >
         <h1>Hello!    Welcome to MoneyMate Resources</h1>
       <p className='para1'>Tips For You</p>
@@ -112,7 +115,7 @@ Retirement doesn't mean you stop working forever. <br/>
 
 
 </div>
-
+</div>
     
   )
 }
