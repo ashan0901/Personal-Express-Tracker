@@ -1,6 +1,7 @@
 package com.faward.walletapp.controller;
 import com.faward.walletapp.entity.Account;
 import com.faward.walletapp.entity.Wallet;
+import com.faward.walletapp.repository.AccountRepository;
 import com.faward.walletapp.service.AccountService;
 import com.faward.walletapp.service.ValidationErrorService;
 import org.mindrot.jbcrypt.BCrypt;
@@ -16,6 +17,9 @@ import org.springframework.web.bind.annotation.*;
 public class AccountController {
     @Autowired
     private AccountService accountService;
+
+    @Autowired
+    private AccountRepository accountRepository;
     @Autowired
     private ValidationErrorService validationService;
 
@@ -30,11 +34,21 @@ public class AccountController {
         ResponseEntity errors = validationService.validate(result);
         if (errors != null) return errors;
 
-        // Hashing the password before saving the account
-        String hashedPassword = BCrypt.hashpw(account.getPassword(), BCrypt.gensalt());
-        account.setPassword(hashedPassword);
+        Account existingUser = accountRepository.findByUsername(account.getUsername());
+        if (existingUser != null) {
+            return ResponseEntity.badRequest().body("Error: Username is already taken!");
+        }else {
+            // Hashing the password before saving the account
+            String hashedPassword = BCrypt.hashpw(account.getPassword(), BCrypt.gensalt());
+            account.setPassword(hashedPassword);
 
-        Account accountSaved = accountService.create(account);
-        return new ResponseEntity<>(accountSaved, HttpStatus.CREATED);
+            Account accountSaved = accountService.create(account);
+            return new ResponseEntity<>(accountSaved, HttpStatus.CREATED);
+        }
+
+
     }
+
+
+
 }
