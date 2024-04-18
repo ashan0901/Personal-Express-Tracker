@@ -5,6 +5,7 @@ import { createTransaction } from "../../../actions/projectActions";
 import axios from "axios";
 import Nav1 from "../../shared/Nav1";
 import Swal from "sweetalert2";
+import emailjs from "emailjs-com";
 
 const AddTransaction = ({ createTransaction }) => {
   const { walletId, userId } = useParams(); // Adjusted to get both walletId and userId from the URL
@@ -14,7 +15,7 @@ const AddTransaction = ({ createTransaction }) => {
     description: "",
     type: "1",
     date: "",
-    purpose: "0",
+    purpose: "7",
   });
   const [wallet, setWallet] = useState({ name: "Loading..." });
 
@@ -54,7 +55,6 @@ const AddTransaction = ({ createTransaction }) => {
       purpose: transaction.purpose,
     };
 
-    // Adjusted to pass both userId and walletId to the createTransaction action
     createTransaction(newTransaction, navigate, walletId, userId);
     Swal.fire({
       title: "Success!",
@@ -64,6 +64,22 @@ const AddTransaction = ({ createTransaction }) => {
       didClose: () => navigate(`/user/${userId}/wallet/${walletId}`),
     });
     console.log(wallet.currentBalance);
+
+    // // Send email
+    // const templateParams = {
+    //   to_email: "ashanchanuka.lk@gmail.com",
+    //   to_name: "Ashan Fernando",
+    //   from_name: "PET",
+    //   message: "A new transaction has been added.",
+    //   //reply_to: 'your-email@example.com'
+    // };
+
+    // emailjs.send(
+    //   "service_d9si9hx",
+    //   "template_99tj63k",
+    //   templateParams,
+    //   "Atan-WV8TWDksltPG"
+    // );
   };
 
   return (
@@ -145,14 +161,14 @@ const AddTransaction = ({ createTransaction }) => {
                         value={transaction.purpose}
                         onChange={(event) => changeHandler(event, "purpose")}
                       >
-                        <option value="0">Select Purpose</option>
+                        <option value="7">Other</option>
                         <option value="1">Food</option>
                         <option value="2">Transport</option>
                         <option value="3">Entertainment</option>
                         <option value="4">Communication</option>
                         <option value="5">Cloths</option>
                         <option value="6">Toiletry</option>
-                        <option value="7">Other</option>
+                        {/* <option value="7">Other</option> */}
                       </select>
                     </div>
                   )}

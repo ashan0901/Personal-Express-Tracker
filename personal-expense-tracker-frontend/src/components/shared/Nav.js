@@ -34,7 +34,12 @@ function Nav() {
           </ul>
 
           <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
+            <li className="nav-item">
+              <Link className="nav-link" to="/resourse">
+                Resourses
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link className="nav-link" to="/contact">
                 Contact Us
               </Link>

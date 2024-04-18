@@ -13,7 +13,7 @@ function contact() {
                     <p>Have a question, feedback, or need support? We're here to help! Reach out to us using the form below, and we'll get back to you as soon as possible. Your satisfaction is our priority, and we're committed to providing you with the best experience possible with our expense tracker app.</p>
                     <p>Thank you for using our expense tracker app!</p>
                 </div>
-                <div className="container">
+                <div className="container2">
                     <div className="contactInfo">
                         <div className="box">
                             <div className="icon"><img src="https://t4.ftcdn.net/jpg/02/72/89/67/240_F_272896745_tlTivOH81qWIVzz34KqFGm8LO3N9hMYQ.jpg" alt="Address Icon" /></div>

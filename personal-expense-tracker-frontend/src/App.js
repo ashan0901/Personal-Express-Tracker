@@ -15,6 +15,7 @@ import Transaction from "./components/transaction/Transaction";
 import AddTransaction from "./components/transaction/transactionoperation/AddTransaction";
 import AboutUs from "./components/AboutUs/AboutUs";
 import ContactUs from "./components/ContactUs/contact";
+import Resourse from "./components/Resourse/Resources";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path="/register" exact element={<RegisterForm />} />
           <Route path="/aboutus" exact element={<AboutUs />} />
           <Route path="/contact" exact element={<ContactUs />} />
+          <Route path="/resourse" exact element={<Resourse />} />
         </Routes>
       </BrowserRouter>
     </Provider>
