@@ -27,13 +27,18 @@ function Nav() {
             style={{ marginLeft: "auto" }}
           >
             <li className="nav-item">
-              <Link className="nav-link" to={`/aboutus`}>
-                About Us
+              <Link className="nav-link" to={`/`}>
+                Home
               </Link>
             </li>
           </ul>
 
           <ul className="navbar-nav mr-auto">
+            <li className="nav-item">
+              <Link className="nav-link" to={`/aboutus`}>
+                About Us
+              </Link>
+            </li>
             <li className="nav-item">
               <Link className="nav-link" to="/resourse">
                 Resourses
