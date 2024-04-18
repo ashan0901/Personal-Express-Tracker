@@ -24,7 +24,6 @@ public class Wallet {
 
     private Integer priority; //1=High 2=Medium 3=Low
 
-    private Double limit;
     private Double currentBalance = 0.0 ;
 
     @DBRef

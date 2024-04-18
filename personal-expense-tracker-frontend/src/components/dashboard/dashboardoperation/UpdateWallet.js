@@ -15,7 +15,6 @@ const UpdateWallet = ({ wallet, getWallet }) => {
     accountNumber: "",
     description: "",
     priority: "",
-    limit: "",
   });
 
   useEffect(() => {
@@ -29,8 +28,7 @@ const UpdateWallet = ({ wallet, getWallet }) => {
         accountNumber: wallet.accountNumber || "",
         description: wallet.description || "",
         // Ensure priority is not null; use a default value or an empty string
-        priority: wallet.priority || "", // You can replace "" with a default value like "3" for Low if that makes sense for your app
-        limit: wallet.limit || "", // You can replace "" with a default value like "0" if that makes sense for your app
+        priority: wallet.priority || "", // You can replace "" with a default value like "3" for Low if that makes sense for your appp
       });
     }
   }, [wallet]);
@@ -98,16 +96,6 @@ const UpdateWallet = ({ wallet, getWallet }) => {
                     onChange={(event) => changeHandler(event, "description")}
                     placeholder="Description"
                   ></textarea>
-                </div>
-                <br />
-                <div className="form-group">
-                  <input
-                    type="number"
-                    value={walletState.limit}
-                    onChange={(event) => changeHandler(event, "limit")}
-                    className="form-control form-control-lg"
-                    placeholder="Limit"
-                  />
                 </div>
                 <br />
                 <div className="form-group">

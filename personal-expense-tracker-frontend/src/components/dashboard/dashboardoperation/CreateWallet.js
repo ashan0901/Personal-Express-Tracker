@@ -9,7 +9,6 @@ function CreateWallet() {
   const [accountNumber, setAccountNumber] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("");
-  const [limit, setLimit] = useState("");
 
   const { userId } = useParams();
 
@@ -20,7 +19,7 @@ function CreateWallet() {
     event.preventDefault();
 
     console.log(userId);
-    const newWallet = { name, accountNumber, limit, description, priority };
+    const newWallet = { name, accountNumber, description, priority };
     dispatch(createWallet(newWallet, navigate, userId));
   };
 
@@ -52,16 +51,6 @@ function CreateWallet() {
                     onChange={(e) => setAccountNumber(e.target.value)}
                     className="form-control form-control-lg"
                     placeholder="Account No"
-                  />
-                </div>
-                <br />
-                <div className="form-group">
-                  <input
-                    type="number"
-                    onChange={(e) => setLimit(e.target.value)}
-                    min="1"
-                    className="form-control form-control-lg"
-                    placeholder="Limit"
                   />
                 </div>
                 <br />
