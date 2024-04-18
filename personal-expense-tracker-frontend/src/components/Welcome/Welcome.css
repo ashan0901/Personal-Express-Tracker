@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+@keyframes pulse {
+    0%, 100% {
+      transform: scale(1); /* Original size */
+      color: #3498db; /* Starting color (light blue) */
+    }
+    50% {
+      transform: scale(1.1); /* Slightly larger */
+      color: #e74c3c; /* Change color to red */
+    }
+  }
+  
+  .display-3 {
+    font-size: 100px; /* Large text size */
+    font-family: 'Playfair Display', serif; /* Iconic, sophisticated font */
+    font-weight: 700; /* Bold font weight */
+    color: #3498db; /* Initial color */
+    animation: pulse 2s infinite; /* Apply the animation continuously */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25); /* Subtle text shadow for better readability */
+  }
+  
+  
+ 

@@ -5,7 +5,6 @@ import { createTransaction } from "../../../actions/projectActions";
 import axios from "axios";
 import Nav1 from "../../shared/Nav1";
 import Swal from "sweetalert2";
-import emailjs from "emailjs-com";
 
 const AddTransaction = ({ createTransaction }) => {
   const { walletId, userId } = useParams(); // Adjusted to get both walletId and userId from the URL
@@ -64,22 +63,6 @@ const AddTransaction = ({ createTransaction }) => {
       didClose: () => navigate(`/user/${userId}/wallet/${walletId}`),
     });
     console.log(wallet.currentBalance);
-
-    // // Send email
-    // const templateParams = {
-    //   to_email: "ashanchanuka.lk@gmail.com",
-    //   to_name: "Ashan Fernando",
-    //   from_name: "PET",
-    //   message: "A new transaction has been added.",
-    //   //reply_to: 'your-email@example.com'
-    // };
-
-    // emailjs.send(
-    //   "service_d9si9hx",
-    //   "template_99tj63k",
-    //   templateParams,
-    //   "Atan-WV8TWDksltPG"
-    // );
   };
 
   return (

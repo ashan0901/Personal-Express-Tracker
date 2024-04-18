@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Nav from "../shared/Nav";
 import backgroundVideo from "./v2.mp4";
+import "./Welcome.css";
 
 class Welcome extends Component {
   render() {
@@ -31,12 +32,17 @@ class Welcome extends Component {
                 <br />
                 <br />
                 <br />
+                <div className="display-3" style={{ fontSize: "100px" }}>
+                  MoneyMate
+                </div>
+                <br />
+                <hr />
 
                 <h1 className="display-1 mb-4">Personal Expense Manager</h1>
                 <p className="lead">
                   Create your account to manage your daily expense and income
                 </p>
-                <hr />
+                <br />
                 <Link
                   to="/register"
                   className="btn btn-lg btn-primary mr-2"

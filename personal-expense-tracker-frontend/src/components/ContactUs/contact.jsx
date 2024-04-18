@@ -1,8 +1,51 @@
 import React from 'react';
 import './contact.css';
 import Nav from '../shared/Nav';
+import emailjs from "emailjs-com";
+import Swal from "sweetalert2";
+import { useNavigate } from 'react-router-dom';
 
-function contact() {
+function Contact() {
+    const navigate = useNavigate();
+
+    const handleSubmit1 = (event) => {
+        event.preventDefault();
+
+        // Collect input values from the form fields
+        const { name, email } = event.target.elements;
+
+        // Send email
+    const templateParams = {
+        to_email: email.value,
+        to_name: name.value,
+      };
+      emailjs.send(
+        "service_d9si9hx",
+        "template_99tj63k",
+        templateParams,
+        "Atan-WV8TWDksltPG"
+      ).then((response) => {
+        Swal.fire({
+          title: "Success!",
+          text: "Feedback Recorded",
+          icon: "success",
+          confirmButtonText: "Great!"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            navigate('/'); // Redirect to the welcome page
+          }
+        });
+      }).catch((error) => {
+        Swal.fire({
+          title: "Error!",
+          text: "Failed to send email",
+          icon: "error",
+          confirmButtonText: "OK"
+        });
+      });
+    
+      };
+    
     return (
         <div>
             <Nav />
@@ -39,7 +82,7 @@ function contact() {
                         </div>
                     </div>
                     <div className="contactForm">
-                        <form>
+                        <form onSubmit={handleSubmit1}>
                             <h2>Send Message</h2>
                             <div className="inputBox">
                                 <input type="text" name="name" required />
@@ -64,4 +107,4 @@ function contact() {
     );
 }
 
-export default contact;
+export default Contact;
