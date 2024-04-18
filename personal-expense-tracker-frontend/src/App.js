@@ -16,6 +16,7 @@ import AddTransaction from "./components/transaction/transactionoperation/AddTra
 import AboutUs from "./components/AboutUs/AboutUs";
 import ContactUs from "./components/ContactUs/contact";
 import Resourse from "./components/Resourse/Resources";
+import ProtectedRoute from "./validators/ProtectedRoute";
 
 function App() {
   return (
@@ -24,16 +25,39 @@ function App() {
         {/* <Nav />    */}
         <Routes>
           <Route path="/" exact element={<Welcome />} />
-          <Route path="/:userId" element={<Dashboard />} />
-          <Route path="/wall/add/:userId" exact element={<CreateWallet />} />
+          <Route
+            path="/:userId"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/wall/add/:userId"
+            exact
+            element={
+              <ProtectedRoute>
+                <CreateWallet />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/updatewallet/:userId/:walletId"
             exact
-            element={<UpdateWallet />}
+            element={
+              <ProtectedRoute>
+                <UpdateWallet />
+              </ProtectedRoute>
+            }
           />
           <Route
             path="/user/:userId/wallet/:walletId"
-            element={<Transaction />}
+            element={
+              <ProtectedRoute>
+                <Transaction />
+              </ProtectedRoute>
+            }
           />
           <Route
             path="/user/:userId/wallet/:walletId/addTransaction"

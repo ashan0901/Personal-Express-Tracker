@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 
 function Nav1() {
   const handleLogout = () => {
+    sessionStorage.setItem("loginStatus", "false");
     Swal.fire({
       title: "Are you sure?",
       text: "You are about to log out.",
@@ -23,11 +24,6 @@ function Nav1() {
           timerProgressBar: true,
           onBeforeOpen: () => {
             Swal.showLoading();
-          },
-
-          willClose: () => {
-            // This is where you would handle the actual logout logic
-            // For example, clearing the session, redirecting the user, etc.
           },
         });
 
