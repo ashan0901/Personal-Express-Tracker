@@ -1,0 +1,152 @@
+.contact {
+    text-align: center;
+    padding: 80px 0;
+    background: url('https://images.pexels.com/photos/618079/pexels-photo-618079.jpeg?auto=compress&cs=tinysrgb&w=600');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.content {
+    padding: 20px;
+}
+
+.content h2 {
+    margin-bottom: 10px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-size: 50px;
+    font-color: #223b96;
+
+}
+
+.content p {
+    margin-bottom: 20px;
+    font-family: "Times New Roman", Times, serif;
+    ;
+    font-size: 25px;
+    font-color: #0c2063;
+    text-shadow: 0 0 10px #ffffff, 0 0 20px #fff, 0 0 42px rgb(11, 36, 121), 0 0 82px rgb(11, 36, 121), 0 0 92px #0fa;
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.contactInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.box {
+    background: #fff;
+    font-family: "Georgia", Times, serif;
+    ;
+    margin: 20px;
+    padding: 10px;
+    width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #7a7fcc1a;
+}
+
+.box .icon img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.box .text {
+    flex: 1;
+}
+
+.box h3 {
+    margin-bottom: 5px;
+}
+
+.box p {
+    margin: 0;
+}
+
+.contactForm {
+    margin-top: 20px;
+}
+
+.contactForm form {
+    width: 500px;
+    padding: 40px;
+    background-color: #a5d5fc;
+    font-family: "Georgia", Times, serif;
+    font-size: 19px;
+    border-radius: 5px;
+}
+
+.contactForm form h2 {
+    font-weight: 500;
+    margin-bottom: 20px;
+    font-family: "Georgia", Times, serif;
+    font-size: 25px;
+
+}
+
+.contactForm form .inputBox {
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.contactForm form .inputBox input,
+.contactForm form .inputBox textarea {
+    width: 100%;
+    padding: 10px;
+    background: #f5f5f5;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contactForm form .inputBox input:focus,
+.contactForm form .inputBox textarea:focus {
+    background: #ebebeb;
+}
+
+.contactForm form .inputBox span {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.contactForm form .inputBox input:focus+span,
+.contactForm form .inputBox textarea:focus+span,
+.contactForm form .inputBox input:valid+span,
+.contactForm form .inputBox textarea:valid+span {
+    top: -5px;
+    font-size: 12px;
+    color: #555;
+}
+
+.contactForm form .inputBox input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background: #0105d4;
+    color: #fff;
+    font-size: 18px;
+    /* transition: background 0.3s ease;*/
+}
+
+.contactForm form .inputBox input[type="submit"]:hover {
+    background: #0a053b;
+}
