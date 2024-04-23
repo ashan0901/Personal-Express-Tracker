@@ -79,7 +79,7 @@ const DashboardItem = ({ wallet, deleteWallet }) => {
               </div>
               <Link to={`/updatewallet/${userId}/${wallet.id}`}>
                 <li className="list-group-item update text-info">
-                  <i className="fa fa-edit pr-1"> Update Account Info</i>
+                  <i className="fa fa-edit pr-1"> Update Wallet Info</i>
                 </li>
               </Link>
 

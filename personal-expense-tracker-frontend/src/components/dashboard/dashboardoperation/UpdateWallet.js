@@ -5,7 +5,7 @@ import { getWallet } from "../../../actions/projectActions";
 import axios from "axios";
 import Nav1 from "../../shared/Nav1";
 import Swal from "sweetalert2";
-
+import { Link } from "react-router-dom";
 const UpdateWallet = ({ wallet, getWallet }) => {
   const { walletId, userId } = useParams();
   const navigate = useNavigate();
@@ -66,6 +66,9 @@ const UpdateWallet = ({ wallet, getWallet }) => {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
+              <Link to={`/${userId}`} className="btn btn-info btn-lg">
+                Back to Dashboard
+              </Link>
               <h5 className="display-4 text-center">Update Wallet</h5>
               <hr />
               <form onSubmit={submitHandler}>

@@ -47,7 +47,7 @@ function CreateWallet() {
                 <br />
                 <div className="form-group">
                   <input
-                    type="text"
+                    type="number"
                     onChange={(e) => setAccountNumber(e.target.value)}
                     className="form-control form-control-lg"
                     placeholder="Account No"
