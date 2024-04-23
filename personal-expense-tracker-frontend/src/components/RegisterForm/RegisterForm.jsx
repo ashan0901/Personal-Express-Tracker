@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Nav from "../shared/Nav";
-// import backgroundImage from './image10.jpg';
 import "./Register.css";
 import Swal from "sweetalert2";
 import backgroundVideo from "./v1.mp4";
@@ -16,6 +15,7 @@ function Signup() {
     password: "",
     confirmPassword: "",
   });
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -23,12 +23,37 @@ function Signup() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const validatePassword = (password) => {
+    const errors = {};
+    if (password.length < 8) {
+      errors.length = "Password must be at least 8 characters long.";
+    }
+    if (!/[A-Z]/.test(password)) {
+      errors.uppercase = "Password must contain at least one uppercase letter.";
+    }
+    if (!/[a-z]/.test(password)) {
+      errors.lowercase = "Password must contain at least one lowercase letter.";
+    }
+    if (!/[0-9]/.test(password)) {
+      errors.number = "Password must contain at least one number.";
+    }
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      errors.special = "Password must contain at least one special character.";
+    }
+    return errors;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    const newErrors = validatePassword(formData.password);
+    setErrors(newErrors);
 
-    try {
-      if (formData.password === formData.confirmPassword) {
+    if (
+      Object.keys(newErrors).length === 0 &&
+      formData.password === formData.confirmPassword
+    ) {
+      try {
         const response = await axios.post(
           "http://localhost:8080/account/save",
           formData
@@ -45,8 +70,19 @@ function Signup() {
             didClose: () => navigate("/"),
           });
         }, 2000);
-      } else {
+      } catch (error) {
+        console.error("Error submitting form:", error);
         setLoading(false);
+        Swal.fire({
+          title: "Error!",
+          text: "Signup failed. User name Already Exists",
+          icon: "error",
+          confirmButtonText: "Try Again",
+        });
+      }
+    } else {
+      setLoading(false);
+      if (formData.password !== formData.confirmPassword) {
         Swal.fire({
           title: "Error!",
           text: "Passwords do not match",
@@ -54,15 +90,6 @@ function Signup() {
           confirmButtonText: "Try Again",
         });
       }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      setLoading(false);
-      Swal.fire({
-        title: "Error!",
-        text: "Signup failed. User name Already Exists",
-        icon: "error",
-        confirmButtonText: "Try Again",
-      });
     }
   };
 
@@ -70,7 +97,6 @@ function Signup() {
     <div>
       <Nav />
       <div className="bodyclass1">
-        {/* Background video */}
         <video
           autoPlay
           loop
@@ -87,7 +113,6 @@ function Signup() {
         >
           <source src={backgroundVideo} type="video/mp4" />
         </video>
-        {/* <div>Ashan</div> */}
         <div className="wrapper">
           <form onSubmit={handleSubmit}>
             <h1>Sign Up</h1>
@@ -135,6 +160,11 @@ function Signup() {
                 name="password"
                 onChange={handleChange}
               />
+              {Object.keys(errors).map((key) => (
+                <p key={key} className="error">
+                  {errors[key]}
+                </p>
+              ))}
             </div>
             <div className="input-box">
               <input
